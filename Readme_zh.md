@@ -69,7 +69,7 @@ caddy v1.0.5
 
 ```
 
-您需要将``context```更改为您的Dockerfile所在的位置。
+您需要将```context```更改为您的Dockerfile所在的位置。
 
 ### 改变 environment.
 
