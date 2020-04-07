@@ -1,5 +1,7 @@
 # caddy_docker
 
+[中文](Readme_zh.md)
+
 this is a docker image for Caddy. Thanks to [abiosoft](https://github.com/abiosoft/caddy-docker)
 
 ## why to build it
