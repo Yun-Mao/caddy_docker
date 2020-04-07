@@ -75,9 +75,9 @@ caddy v1.0.5
 
 ```TZ``` 是时区。
 
-如果您使用dnspod，则需要使用DNSPOD_API_KEY，例如id，api_tokens。
+如果您使用dnspod，则需要使用```DNSPOD_API_KEY```，例如```id，api_tokens```。
 
-如果您使用cloudflare，则需要```CLOUDFLARE_EMAIL``和```CLOUDFLARE_API_KEY```
+如果您使用cloudflare，则需要```CLOUDFLARE_EMAIL```和```CLOUDFLARE_API_KEY```
 你可以从中得到它 [cloudflare]( https://dash.cloudflare.com/profile/api-tokens)
 
 ## 更重要的是
