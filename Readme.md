@@ -81,7 +81,7 @@ you can get it from [cloudflare]( https://dash.cloudflare.com/profile/api-tokens
 
 ## what's more
 
-you can get 'cloudflare' plugins from [it](https://github.com/caddyserver/dnsproviders/blob/master/cloudflare/cloudflare.go)
+you want to get 'cloudflare' plugins from [it](https://github.com/caddyserver/dnsproviders/blob/master/cloudflare/cloudflare.go)
 then you can do like ```specially``` to add it or to see how I add the ```dnspod``` plugins.
 
 ## Thanks
