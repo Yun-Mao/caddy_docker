@@ -1,11 +1,5 @@
 #!/bin/sh
 
-VERSION=${VERSION:-"1.0.5"}
-IMPORT="github.com/caddyserver/caddy"
-
-# add `v` prefix for version numbers
-[ "$(echo $VERSION | cut -c1)" -ge 0 ] 2>/dev/null && VERSION="v$VERSION"
-
 stage() {
     STAGE="$1"
     echo
@@ -25,7 +19,23 @@ end_stage() {
 module() {
     mkdir -p /caddy
     cd /caddy # build dir
+    cat > go.mod <<EOF
+    module caddy
 
+    go 1.13
+
+    require (
+        github.com/caddyserver/caddy v1.0.5
+        github.com/captncraig/caddy-realip v0.0.0-20190710144553-6df827e22ab8
+        github.com/captncraig/cors v0.0.0-20190703115713-e80254a89df1
+        github.com/echocat/caddy-filter v0.14.0
+        github.com/epicagency/caddy-expires v1.1.1
+        github.com/go-acme/lego/v3 v3.7.0
+        github.com/hacdias/caddy-minify v1.0.2
+        github.com/nicolasazrak/caddy-cache v0.3.4
+        github.com/pquerna/cachecontrol v0.0.0-20180517163645-1555304b9b35 // indirect
+    )
+EOF
     # main and telemetry
     cat > main.go <<EOF
     package main
@@ -209,21 +219,12 @@ module() {
 EOF
 
     # setup module
-    go mod init caddy
-    go get -v $IMPORT@$VERSION
+    # go mod init caddy
+    go get github.com/caddyserver/caddy
 }
 
-
-# caddy source
-stage "fetching caddy source"
-git clone https://github.com/caddyserver/caddy -b "$VERSION" /go/src/$IMPORT \
-    && cd /go/src/$IMPORT
-end_stage
-
-
-
 # check for modules support
-export GO111MODULE=on
+# export GO111MODULE=on
 
 # add plugins and telemetry
 stage "customising plugins and telemetry"
@@ -242,4 +243,4 @@ mkdir -p /install \
     && /install/caddy -version
 end_stage
 
-echo "installed caddy version $VERSION at /install/caddy"
+echo "installed caddy version at /install/caddy"
